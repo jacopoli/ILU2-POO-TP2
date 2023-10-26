@@ -14,26 +14,43 @@ public class BoundaryAcheterProduit {
 	}
 
 	public void acheterProduit(String nomAcheteur) {
-		// TODO à completer
+	
 		
 		Boolean estVillageois = controlAcheterProduit.verifierIdentite(nomAcheteur);
 		if (!estVillageois) {
-			System.out.println(String.format("Je suis d�sol� %s mais il faut �tr un habitant de noter village pour commercer ici.", nomAcheteur));
+			System.out.println(String.format("Je suis désolé %s mais il faut �tr un habitant de noter village pour commercer ici.", nomAcheteur));
 		}
 		else {
 			System.out.println("Quel produit voulez-vous acheter ?");
 			String produit = scan.nextLine();
-			Etal[] etalsProduit = controlAcheterProduit.trouverProduit(produit);
-			if (etalsProduit == null) {
-				System.out.println("D�sol�, personne ne vend ce produit au march�.");
+			String[] nomsVendeurs = controlAcheterProduit.trouverProduit(produit);
+			if (nomsVendeurs == null) {
+				System.out.println("Désolé, personne ne vend ce produit au march�.");
 			}
 			else {
-				for (int i=0; i<etalsProduit.length; i++) {
-					System.out.println(String.format("%d - %s", i, etalsProduit[i].getVendeur().getNom()));
+				System.out.println(String.format("Chez quel commerçant voulez-vous acheter des %s", produit));
+				for (int i=0; i<nomsVendeurs.length; i++) {
+					System.out.println(String.format("%d - %s", i+1, nomsVendeurs[i]));
 				}
-				String vendeurChoisi = scan.nextLine();
+				String nomVendeur = nomsVendeurs[Integer.parseInt(scan.nextLine())-1];
+				System.out.println(String.format("%s se déplace jusqu'à l'étal du vendeur %s", nomAcheteur, nomVendeur));
+				System.out.println(String.format("Bonjour %s\nCombien de %s voulez-vous acheter?", nomAcheteur, produit));
+				int quantite = Integer.parseInt(scan.nextLine());
+				int stockDisponible = controlAcheterProduit.stockEtal(nomVendeur);
+				if (stockDisponible==0) {
+					System.out.println(String.format("%s veut acheter %d %s, malheureusement il n'y en a plus!", nomAcheteur, quantite, produit));
+				}
+				else if (stockDisponible<quantite) {
+					System.out.println(String.format("%s veut acheter %d %s, malheureusement %s n'en a plus que %d. %s achète tout le stock de %s.", nomAcheteur, quantite, produit, nomVendeur, stockDisponible, nomAcheteur, nomVendeur));
+					controlAcheterProduit.acheterProduit(nomVendeur, stockDisponible);
+				}
+				else {
+					System.out.println(String.format("%s achète %d %s à %s.",nomAcheteur, quantite, produit, nomVendeur));
+					controlAcheterProduit.acheterProduit(nomVendeur, quantite);
+				}
 			}
-			
 		}
 	}
+	
+	
 }

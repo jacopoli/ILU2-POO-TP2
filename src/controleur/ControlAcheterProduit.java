@@ -17,20 +17,27 @@ public class ControlAcheterProduit {
 		this.controlTrouverEtalVendeur = controlTrouverEtalVendeur;
 	}
 
-	//TODO a completer
 	public Boolean verifierIdentite(String nomAcheteur) {
 		return controlVerifierIdentite.verifierIdentite(nomAcheteur);
 	}
 	
-	public Etal[] trouverProduit(String produit) {
+	public String[] trouverProduit(String produit) {
 		Gaulois[] vendeurs = village.rechercherVendeursProduit(produit);
-		if (vendeurs.length !=0) {
-			Etal[] etalsVendeurs = new Etal[vendeurs.length];
+		if (vendeurs !=null) {
+			String[] etalsVendeurs = new String[vendeurs.length];
 			for (int i=0; i<vendeurs.length ; i++) {
-				etalsVendeurs[i]=controlTrouverEtalVendeur.trouverEtalVendeur(vendeurs[i+1].getNom());
+				etalsVendeurs[i]=vendeurs[i].getNom();
 			}
 			return etalsVendeurs;
 		}
 		return null;
+	}
+	
+	public int stockEtal(String nomVendeur) {
+		return controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur).getQuantite();
+	}
+	
+	public void acheterProduit(String nomVendeur, int quantite) {
+		controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur).acheterProduit(quantite);
 	}
 }
