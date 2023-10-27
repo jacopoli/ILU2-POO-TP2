@@ -3,7 +3,7 @@ package frontiere;
 import java.util.Scanner;
 
 import controleur.ControlAcheterProduit;
-import villagegaulois.Etal;
+
 
 public class BoundaryAcheterProduit {
 	private Scanner scan = new Scanner(System.in);
