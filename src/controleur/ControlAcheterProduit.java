@@ -1,8 +1,7 @@
 package controleur;
 
-import villagegaulois.Village;
 import personnages.Gaulois;
-import villagegaulois.Etal;
+import villagegaulois.Village;
 
 public class ControlAcheterProduit {
 	private Village village;

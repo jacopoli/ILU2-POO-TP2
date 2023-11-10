@@ -1,7 +1,7 @@
 package controleur;
 
-import villagegaulois.Etal;
 import personnages.Gaulois;
+import villagegaulois.Etal;
 import villagegaulois.Village;
 
 public class ControlTrouverEtalVendeur {

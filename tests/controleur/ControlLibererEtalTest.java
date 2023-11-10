@@ -1,6 +1,9 @@
 package controleur;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,13 +43,15 @@ class ControlLibererEtalTest {
 
 	@Test
 	void testLibererEtal() {
-		assertTrue(control.isVendeur("Asterix"));
-		control.libererEtal("Asterix");
-		assertFalse(control.isVendeur("Asterix"));
+		assertNull(control.libererEtal("Obelix"));
+		assertNotNull(control.libererEtal("Asterix"));
+		
 		
 //		//liberer etal inexistant
 //		assertFalse(control.isVendeur("Obelix"));
 //		assertNull(control.libererEtal("Obelix"));
 	}
+	
+	
 
 }

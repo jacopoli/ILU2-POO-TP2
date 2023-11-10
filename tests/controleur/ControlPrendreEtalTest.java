@@ -1,6 +1,8 @@
 package controleur;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +18,7 @@ class ControlPrendreEtalTest {
 	private Gaulois gaulois;
 	
 	@BeforeEach
-	private void initTest() {
+	protected void initTest() {
 		village = new Village ("le village", 10, 1);
 		Chef chef = new Chef("chef", 2, village);
 		village.setChef(chef);
