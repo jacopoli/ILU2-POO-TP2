@@ -28,8 +28,8 @@ public class ControlLibererEtal {
 		if (etal==null) {
 			return null;
 		}
-		etal.libererEtal();
 		donneesEtal = etal.etatEtal();
+		etal.libererEtal();
 		return donneesEtal;
 	}
 

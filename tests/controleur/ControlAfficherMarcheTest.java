@@ -7,13 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import personnages.Chef;
-import personnages.Gaulois;
 import villagegaulois.Village;
 
 class ControlAfficherMarcheTest {
 	private Village village;
 	private ControlAfficherMarche control;
-	private Gaulois vendeur;
 	
 	@BeforeEach
 	void initTest() {

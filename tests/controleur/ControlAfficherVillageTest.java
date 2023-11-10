@@ -1,13 +1,14 @@
 package controleur;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import personnages.Chef;
+import personnages.Druide;
 import personnages.Gaulois;
 import villagegaulois.Village;
 
@@ -22,6 +23,7 @@ class ControlAfficherVillageTest {
 		village.setChef(chef);
 		control= new ControlAfficherVillage(village);
 		village.ajouterHabitant(new Gaulois("Asterix", 1));
+		village.ajouterHabitant(new Druide("Mario",4,4,4));
 	}
 	
 
@@ -32,8 +34,8 @@ class ControlAfficherVillageTest {
 
 	@Test
 	void testDonnerNomsVillageois() {
-		
-		assertEquals(control.donnerNomsVillageois()[0], "chef");
+		String[] villageois = {"chef", "Asterix", "le druide Mario"};
+		assertArrayEquals(control.donnerNomsVillageois(), villageois);
 		assertEquals(control.donnerNomsVillageois()[1], "Asterix");
 	}
 
@@ -44,7 +46,7 @@ class ControlAfficherVillageTest {
 
 	@Test
 	void testDonnerNbEtals() {
-		assertTrue(control.donnerNbEtals()==10);
+		assertEquals(control.donnerNbEtals(),10);
 	}
 
 }

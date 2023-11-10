@@ -1,6 +1,7 @@
 package controleur;
 
 import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -44,12 +45,9 @@ class ControlLibererEtalTest {
 	@Test
 	void testLibererEtal() {
 		assertNull(control.libererEtal("Obelix"));
-		assertNotNull(control.libererEtal("Asterix"));
+		String[] infosEtalAsterix = {"true","Asterix", "fleur", "2", "0"};
+		assertArrayEquals(control.libererEtal("Asterix"), infosEtalAsterix);
 		
-		
-//		//liberer etal inexistant
-//		assertFalse(control.isVendeur("Obelix"));
-//		assertNull(control.libererEtal("Obelix"));
 	}
 	
 	

@@ -1,8 +1,8 @@
 package controleur;
 
 import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +36,7 @@ class ControlTrouverEtalVendeurTest {
 		assertNull(control.trouverEtalVendeur("germain"));
 		assertNull(control.trouverEtalVendeur("gaulois"));
 		village.ajouterHabitant(vendeur);
-		assertTrue(control.trouverEtalVendeur("gaulois").getVendeur()==vendeur);
+		assertEquals(control.trouverEtalVendeur("gaulois").getVendeur(),vendeur);
 		
 	}
 
